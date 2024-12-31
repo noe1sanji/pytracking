@@ -1,15 +1,23 @@
 import argparse
+import sys
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
+from helpers import save_status
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--url", type=str, required=True)
 parser.add_argument("--headless", action="store_true")
+parser.add_argument("--cache", help="directory")
 
 args = parser.parse_args()
+
+if args.cache and not os.path.isdir(args.cache):
+    print(f"directory {args.cache_directory} not found...")
+    sys.exit(1)
 
 class_item = "ui-search-layout__item"
 class_title_card = "poly-box.poly-component__title"
@@ -30,6 +38,7 @@ with webdriver.Chrome(options=options) as driver:
     )
 
     count = 0
+    items = {}
 
     for item in driver.find_elements(By.CLASS_NAME, class_item):
         count += 1
@@ -41,5 +50,9 @@ with webdriver.Chrome(options=options) as driver:
         print(title)
         print(amount)
         print("-" * 8)
+        items[title] = {"price": amount, "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+        price_tracking(title, amount)
 
     print(f"{count} elementos")
+    tracking_file = os.path.join(cache, "items.json")
+    save_status(tracking_file, items)
