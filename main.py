@@ -1,5 +1,7 @@
 import argparse
+import os
 import sys
+from datetime import datetime
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -7,6 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 from helpers import save_status
+from tracking import price_tracking
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--url", type=str, required=True)
@@ -50,9 +53,12 @@ with webdriver.Chrome(options=options) as driver:
         print(title)
         print(amount)
         print("-" * 8)
-        items[title] = {"price": amount, "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+        items[title] = {
+            "price": amount,
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        }
         price_tracking(title, amount)
 
     print(f"{count} elementos")
-    tracking_file = os.path.join(cache, "items.json")
+    tracking_file = os.path.join(args.cache, "items.json")
     save_status(tracking_file, items)
