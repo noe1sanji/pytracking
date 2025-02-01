@@ -1,12 +1,12 @@
 # PyTracking
 
-My own local price tracking solution.
+Mi propia solucion local de seguimiento de precios.
 
-Sends email when it detects a change in the price of mercadolibre.com, extracts the data using selenium and stores the data in a json file.
+Envia correo cuando detecta un cambio en el precio de mercadolibre.com, extrae los datos usando selenium y almacena los datos en un archivo json.
 
-## How to use
+## Uso
 
-Clone this repository, create the virtual environment and install the dependencies.
+Clone este repositorio, cree el entorno virtual e instale las dependencias.
 
 ```
 git clone https://github.com/noe1sanji/pytracking.git
@@ -16,21 +16,21 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-To see the options.
+Para ver las opciones.
 
 ```
 python main.py --help
 ```
 
-To send emails specify variables in the .env file.
-> Use an app password for [gmail.com](https://support.google.com/mail/answer/185833?hl=es-419)
+Para enviar correos especifique las variables en el archivo .env.
+> Use una contraseña de aplicacion para [gmail.com](https://support.google.com/mail/answer/185833?hl=es-419)
 
 ```
 GMAIL_USERNAME=""
 GMAIL_PASSWORD=""
 ```
 
-## Example
+## Ejemplo
 
 ```
 python main.py \
