@@ -2,7 +2,7 @@
 
 My own local price tracking solution.
 
-Sends email when it detects a change in the price of mercadolibre.com, extracts the data using selenium and stores the data in a json file.
+Sends email when it detects a change in the price of mercadolibre.com, extracts the data using Selenium or Beautiful Soup and stores the data in a json file.
 
 ## How to use
 

@@ -2,7 +2,7 @@
 
 Mi propia solucion local de seguimiento de precios.
 
-Envia correo cuando detecta un cambio en el precio de mercadolibre.com, extrae los datos usando selenium y almacena los datos en un archivo json.
+Envia correo cuando detecta un cambio en el precio de mercadolibre.com, extrae los datos usando Selenium o Beautiful Soup y almacena los datos en un archivo json.
 
 ## Uso
 
